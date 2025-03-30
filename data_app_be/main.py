@@ -1,23 +1,37 @@
-from fastapi import FastAPI, File, UploadFile, Form, HTTPException
+from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import os
 from typing import List
 
 app = FastAPI()
 
+# Enable CORS to allow frontend requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],  
+)
+
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-# Store uploaded files
+# Store uploaded files in memory
 uploaded_files = {}
 
-@app.post("/upload/")
-async def upload_files(files: List[UploadFile] = File(...)):
+@app.post("/upload/")  # ✅ Ensure trailing slash in route
+async def upload_files(files: List[UploadFile] = File(...)):  # Expects multiple files
+    if not files:
+        raise HTTPException(status_code=400, detail="No file uploaded")
+
     for file in files:
         file_path = os.path.join(UPLOAD_DIR, file.filename)
         with open(file_path, "wb") as f:
             f.write(await file.read())
         uploaded_files[file.filename] = file_path
+
     return {"message": "Files uploaded successfully", "files": list(uploaded_files.keys())}
 
 @app.get("/files/")
@@ -33,8 +47,8 @@ async def preview_file(filename: str, rows: int = 5):
     
     try:
         df = pd.read_csv(file_path)
-
-        # Replace NaN and Infinite values with a placeholder (e.g., null)
+        
+        # Replace NaN and infinite values with "NULL"
         df = df.fillna("NULL").replace([float("inf"), float("-inf")], "NULL")
 
         return {"preview": df.head(rows).to_dict(orient="records")}
