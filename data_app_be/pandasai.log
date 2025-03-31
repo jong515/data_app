@@ -8393,3 +8393,329 @@ At the end, declare "result" variable as a dictionary of type and value.
 Generate python code and return full updated code:
 
 ### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-31 15:13:14 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-31 15:13:14 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Execute SQL query to calculate the median fare of the passengers
+sql_query = """
+SELECT MEDIAN(Fare) AS median_fare
+FROM table_2db748e18326a83bc3654aebc5f76f33
+"""
+
+# Get the result from the database
+median_fare_df = execute_sql_query(sql_query)
+
+# Extract the median fare value
+median_fare = median_fare_df['median_fare'].iloc[0]
+
+# Declare result var: 
+result = {
+    "type": "number",
+    "value": median_fare
+}
+2025-03-31 15:13:14 [INFO] Validating code requirements...
+2025-03-31 15:13:14 [INFO] Code validation successful.
+2025-03-31 15:13:14 [INFO] Cleaning the generated code...
+2025-03-31 15:13:14 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT MEDIAN(Fare) AS median_fare
+FROM table_2db748e18326a83bc3654aebc5f76f33
+"""
+median_fare_df = execute_sql_query(sql_query)
+median_fare = median_fare_df['median_fare'].iloc[0]
+result = {'type': 'number', 'value': median_fare}
+2025-03-31 15:13:14 [INFO] Response generated successfully.
+2025-03-31 16:37:07 [INFO] Question: What%20is%20the%20median%20age%20of%20passengers
+2025-03-31 16:37:07 [INFO] Running PandaAI with openai LLM...
+2025-03-31 16:37:07 [INFO] Prompt ID: b0762bdd-9af2-43e1-b5ee-89b547cef8c7
+2025-03-31 16:37:07 [INFO] Generating new code...
+2025-03-31 16:37:07 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_2db748e18326a83bc3654aebc5f76f33" dimensions="418x11">
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+892,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,,Q
+893,3,"Wilkes, Mrs. James (Ellen Needs)",female,47.0,1,0,363272,7.0,,S
+894,2,"Myles, Mr. Thomas Francis",male,62.0,0,0,240276,9.6875,,Q
+895,3,"Wirz, Mr. Albert",male,27.0,0,0,315154,8.6625,,S
+896,3,"Hirvonen, Mrs. Alexander (Helga E Lindqvist)",female,22.0,1,1,3101298,12.2875,,S
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What%20is%20the%20median%20age%20of%20passengers
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-31 16:37:10 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-31 16:37:10 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Execute SQL query to calculate the median age of passengers
+sql_query = """
+SELECT MEDIAN(Age) AS median_age
+FROM table_2db748e18326a83bc3654aebc5f76f33
+"""
+median_age_df = execute_sql_query(sql_query)
+
+# Extract the median age from the dataframe
+median_age = median_age_df['median_age'].iloc[0]
+
+# Declare result var: 
+result = {
+    "type": "number",
+    "value": median_age
+}
+2025-03-31 16:37:10 [INFO] Validating code requirements...
+2025-03-31 16:37:10 [INFO] Code validation successful.
+2025-03-31 16:37:10 [INFO] Cleaning the generated code...
+2025-03-31 16:37:10 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT MEDIAN(Age) AS median_age
+FROM table_2db748e18326a83bc3654aebc5f76f33
+"""
+median_age_df = execute_sql_query(sql_query)
+median_age = median_age_df['median_age'].iloc[0]
+result = {'type': 'number', 'value': median_age}
+2025-03-31 16:37:11 [INFO] Response generated successfully.
+2025-03-31 16:37:17 [INFO] Question: What%20is%20the%20average%20age%20of%20passengers%20in%20Pclass%203
+2025-03-31 16:37:17 [INFO] Running PandaAI with openai LLM...
+2025-03-31 16:37:17 [INFO] Prompt ID: e63c71b6-e41d-440e-9b68-43f5ab30028b
+2025-03-31 16:37:17 [INFO] Generating new code...
+2025-03-31 16:37:17 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_2db748e18326a83bc3654aebc5f76f33" dimensions="418x11">
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+892,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,,Q
+893,3,"Wilkes, Mrs. James (Ellen Needs)",female,47.0,1,0,363272,7.0,,S
+894,2,"Myles, Mr. Thomas Francis",male,62.0,0,0,240276,9.6875,,Q
+895,3,"Wirz, Mr. Albert",male,27.0,0,0,315154,8.6625,,S
+896,3,"Hirvonen, Mrs. Alexander (Helga E Lindqvist)",female,22.0,1,1,3101298,12.2875,,S
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What%20is%20the%20average%20age%20of%20passengers%20in%20Pclass%203
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-31 16:37:24 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-31 16:37:24 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Define the SQL query to calculate the average age of passengers in Pclass 3
+sql_query = """
+SELECT AVG(Age) AS average_age
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Pclass = 3
+"""
+
+# Execute the SQL query and store the result in a DataFrame
+average_age_df = execute_sql_query(sql_query)
+
+# Extract the average age from the DataFrame
+average_age = average_age_df['average_age'].iloc[0]
+
+# Declare result var: 
+result = {
+    "type": "number",
+    "value": average_age
+}
+2025-03-31 16:37:24 [INFO] Validating code requirements...
+2025-03-31 16:37:24 [INFO] Code validation successful.
+2025-03-31 16:37:24 [INFO] Cleaning the generated code...
+2025-03-31 16:37:24 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT AVG(Age) AS average_age
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Pclass = 3
+"""
+average_age_df = execute_sql_query(sql_query)
+average_age = average_age_df['average_age'].iloc[0]
+result = {'type': 'number', 'value': average_age}
+2025-03-31 16:37:24 [INFO] Response generated successfully.
+2025-03-31 16:42:07 [INFO] Question: What%20is%20the%20median%20age%20of%20passengers
+2025-03-31 16:42:07 [INFO] Running PandaAI with openai LLM...
+2025-03-31 16:42:07 [INFO] Prompt ID: f0bf9a1d-3ba2-452b-b631-a72049053fce
+2025-03-31 16:42:07 [INFO] Generating new code...
+2025-03-31 16:42:07 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_2db748e18326a83bc3654aebc5f76f33" dimensions="418x11">
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+892,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,,Q
+893,3,"Wilkes, Mrs. James (Ellen Needs)",female,47.0,1,0,363272,7.0,,S
+894,2,"Myles, Mr. Thomas Francis",male,62.0,0,0,240276,9.6875,,Q
+895,3,"Wirz, Mr. Albert",male,27.0,0,0,315154,8.6625,,S
+896,3,"Hirvonen, Mrs. Alexander (Helga E Lindqvist)",female,22.0,1,1,3101298,12.2875,,S
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What%20is%20the%20median%20age%20of%20passengers
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-31 16:42:09 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-31 16:42:09 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Execute SQL query to calculate the median age of passengers
+sql_query = """
+SELECT MEDIAN(Age) AS median_age
+FROM table_2db748e18326a83bc3654aebc5f76f33
+"""
+median_age_df = execute_sql_query(sql_query)
+
+# Extract the median age from the dataframe
+median_age = median_age_df['median_age'].iloc[0]
+
+# Declare result var: 
+result = {
+    "type": "number",
+    "value": median_age
+}
+2025-03-31 16:42:09 [INFO] Validating code requirements...
+2025-03-31 16:42:09 [INFO] Code validation successful.
+2025-03-31 16:42:09 [INFO] Cleaning the generated code...
+2025-03-31 16:42:09 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT MEDIAN(Age) AS median_age
+FROM table_2db748e18326a83bc3654aebc5f76f33
+"""
+median_age_df = execute_sql_query(sql_query)
+median_age = median_age_df['median_age'].iloc[0]
+result = {'type': 'number', 'value': median_age}
+2025-03-31 16:42:09 [INFO] Response generated successfully.
+2025-03-31 16:42:19 [INFO] Question: What%20is%20the%20average%20age%20of%20passengers%20in%20Pclass%203
+2025-03-31 16:42:19 [INFO] Running PandaAI with openai LLM...
+2025-03-31 16:42:19 [INFO] Prompt ID: 94afba3b-fabf-4d83-8f91-c278224f792f
+2025-03-31 16:42:19 [INFO] Generating new code...
+2025-03-31 16:42:19 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_2db748e18326a83bc3654aebc5f76f33" dimensions="418x11">
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+892,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,,Q
+893,3,"Wilkes, Mrs. James (Ellen Needs)",female,47.0,1,0,363272,7.0,,S
+894,2,"Myles, Mr. Thomas Francis",male,62.0,0,0,240276,9.6875,,Q
+895,3,"Wirz, Mr. Albert",male,27.0,0,0,315154,8.6625,,S
+896,3,"Hirvonen, Mrs. Alexander (Helga E Lindqvist)",female,22.0,1,1,3101298,12.2875,,S
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What%20is%20the%20average%20age%20of%20passengers%20in%20Pclass%203
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
