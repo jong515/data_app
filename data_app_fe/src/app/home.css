@@ -70,3 +70,33 @@
 .styled-table th {
     background-color: #f4f4f4;
 }
+
+/* Prompt history section */
+.prompt-history {
+    margin-top: 20px;
+    text-align: left;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.prompt-history h3 {
+    margin-bottom: 10px;
+}
+
+.prompt-list {
+    list-style: none;
+    padding: 0;
+}
+
+.prompt-list li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.prompt-list li:hover {
+    background-color: #e0e0e0;
+}

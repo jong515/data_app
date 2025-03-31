@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import "./homes.css"; // Add a CSS file for styling
+import "./home.css"; // Add a CSS file for styling
 
 const Home = () => {
     const [file, setFile] = useState(null);
@@ -9,6 +9,7 @@ const Home = () => {
     const [data, setData] = useState([]);
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
+    const [history, setHistory] = useState([]);
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
@@ -70,7 +71,7 @@ const Home = () => {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
                 body: new URLSearchParams({
-                    question: encodeURIComponent(question.trim()), // No need for quotes
+                    question: encodeURIComponent(question.trim()),
                     filename: uploadedFileName,
                 }),
             });
@@ -79,12 +80,13 @@ const Home = () => {
     
             const result = await response.json();
             
-            // Ensure the answer is extracted correctly
             if (result && typeof result.answer === "object" && "value" in result.answer) {
-                setAnswer(result.answer.value); // Extracts the answer value
+                setAnswer(result.answer.value);
             } else {
                 setAnswer(result.answer || "No answer found.");
             }
+
+            setHistory((prev) => [...new Set([question, ...prev])]);
         } catch (error) {
             console.error("Error asking question:", error);
             setAnswer("Error fetching the answer.");
@@ -157,6 +159,21 @@ const Home = () => {
                     <p>{answer}</p>
                 </div>
             )}
+
+            <div className="history-container">
+                <h3>Prompt History</h3>
+                {history.length > 0 ? (
+                    <ul>
+                        {history.map((prompt, index) => (
+                            <li key={index} onClick={() => setQuestion(prompt)} className="history-item">
+                                {prompt}
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No previous prompts</p>
+                )}
+            </div>
         </div>
     );
 };
