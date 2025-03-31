@@ -165,7 +165,7 @@ const Home = () => {
                 </div>
             )}
 
-            <div className="history-container" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="history-container">
                 <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Prompt History:</h3>
                 {history.length > 0 ? (
                     <Select onValueChange={setQuestion} className="mt-2">
