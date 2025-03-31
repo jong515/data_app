@@ -58,11 +58,11 @@ const Home = () => {
     };
 
     const askQuestion = async () => {
-        if (!question || !uploadedFileName) {
+        if (!question.trim() || !uploadedFileName) {
             alert("Please enter a question and upload a file first.");
             return;
         }
-
+    
         try {
             const response = await fetch("http://127.0.0.1:8000/ask/", {
                 method: "POST",
@@ -70,27 +70,27 @@ const Home = () => {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
                 body: new URLSearchParams({
-                    question: question,
+                    question: encodeURIComponent(question.trim()), // No need for quotes
                     filename: uploadedFileName,
                 }),
             });
-
+    
             if (!response.ok) throw new Error("AI request failed");
-
+    
             const result = await response.json();
             
-            // Assuming the response object has a 'value' field containing the answer
-            if (result && result.answer) {
-                setAnswer(result.answer.value || result.answer);  // Render the correct answer value
+            // Ensure the answer is extracted correctly
+            if (result && typeof result.answer === "object" && "value" in result.answer) {
+                setAnswer(result.answer.value); // Extracts the answer value
             } else {
-                setAnswer("No answer found.");
+                setAnswer(result.answer || "No answer found.");
             }
         } catch (error) {
             console.error("Error asking question:", error);
             setAnswer("Error fetching the answer.");
         }
     };
-
+    
     return (
         <div className="container">
             <h1>AI-powered Data Application</h1>
