@@ -101,7 +101,7 @@ const Home = () => {
 
     return (
         <div className="container">
-            <h1>AI-powered Data Application</h1>
+            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">AI-powered Data Application</h1>
             
             <div className="section">
                 <Button onClick={() => document.getElementById("fileInput").click()} className="mb-2">Choose File</Button>
@@ -111,7 +111,7 @@ const Home = () => {
             </div>
 
             <div className="section">
-                <label className="mb-2">Number of Rows:</label>
+                <label className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">Number of Rows:</label>
                 <Input 
                     type="number" 
                     value={nRows} 
@@ -123,7 +123,7 @@ const Home = () => {
             </div>
 
             {data.length > 0 && (
-                <div className="table-container">
+                <div className="full-table-container" style={{ display: 'flex', justifyContent: 'center' }}>
                     <table className="styled-table">
                         <thead>
                             <tr>
@@ -146,7 +146,7 @@ const Home = () => {
             )}
 
             <div className="section">
-                <label className="question-label mb-2">Ask a Question:</label>
+                <label className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">Ask a Question:</label>
                 <Input
                     type="text"
                     value={question}
@@ -160,13 +160,13 @@ const Home = () => {
 
             {answer && (
                 <div className="answer-container">
-                    <h3>AI Answer:</h3>
+                    <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">AI Answer:</h3>
                     <p>{answer}</p>
                 </div>
             )}
 
-            <div className="history-container">
-                <h3>Prompt History</h3>
+            <div className="history-container" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+                <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Prompt History:</h3>
                 {history.length > 0 ? (
                     <Select onValueChange={setQuestion} className="mt-2">
                         <SelectTrigger>

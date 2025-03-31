@@ -8719,3 +8719,339 @@ At the end, declare "result" variable as a dictionary of type and value.
 Generate python code and return full updated code:
 
 ### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-31 16:42:22 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-31 16:42:22 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Define the SQL query to calculate the average age of passengers in Pclass 3
+sql_query = """
+SELECT AVG(Age) AS average_age
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Pclass = 3
+"""
+
+# Execute the SQL query and store the result in a DataFrame
+average_age_df = execute_sql_query(sql_query)
+
+# Extract the average age from the DataFrame
+average_age = average_age_df['average_age'].iloc[0]
+
+# Declare result var: 
+result = {
+    "type": "number",
+    "value": average_age
+}
+2025-03-31 16:42:22 [INFO] Validating code requirements...
+2025-03-31 16:42:22 [INFO] Code validation successful.
+2025-03-31 16:42:22 [INFO] Cleaning the generated code...
+2025-03-31 16:42:22 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT AVG(Age) AS average_age
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Pclass = 3
+"""
+average_age_df = execute_sql_query(sql_query)
+average_age = average_age_df['average_age'].iloc[0]
+result = {'type': 'number', 'value': average_age}
+2025-03-31 16:42:22 [INFO] Response generated successfully.
+2025-03-31 16:48:56 [INFO] Question: What%20is%20the%20total%20number%20of%20males
+2025-03-31 16:48:56 [INFO] Running PandaAI with openai LLM...
+2025-03-31 16:48:56 [INFO] Prompt ID: ca236773-efa5-4a1f-aca4-f66b7a4054c4
+2025-03-31 16:48:56 [INFO] Generating new code...
+2025-03-31 16:48:56 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_2db748e18326a83bc3654aebc5f76f33" dimensions="418x11">
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+892,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,,Q
+893,3,"Wilkes, Mrs. James (Ellen Needs)",female,47.0,1,0,363272,7.0,,S
+894,2,"Myles, Mr. Thomas Francis",male,62.0,0,0,240276,9.6875,,Q
+895,3,"Wirz, Mr. Albert",male,27.0,0,0,315154,8.6625,,S
+896,3,"Hirvonen, Mrs. Alexander (Helga E Lindqvist)",female,22.0,1,1,3101298,12.2875,,S
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What%20is%20the%20total%20number%20of%20males
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-31 16:49:01 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-31 16:49:01 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Execute SQL query to count the total number of males
+sql_query = """
+SELECT COUNT(*) AS total_males
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Sex = 'male'
+"""
+
+# Get the result as a DataFrame
+result_df = execute_sql_query(sql_query)
+
+# Extract the total number of males from the DataFrame
+total_males = result_df['total_males'].iloc[0]
+
+# Declare result var: 
+result = {
+    "type": "number",
+    "value": total_males
+}
+2025-03-31 16:49:01 [INFO] Validating code requirements...
+2025-03-31 16:49:01 [INFO] Code validation successful.
+2025-03-31 16:49:01 [INFO] Cleaning the generated code...
+2025-03-31 16:49:01 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT COUNT(*) AS total_males
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Sex = 'male'
+"""
+result_df = execute_sql_query(sql_query)
+total_males = result_df['total_males'].iloc[0]
+result = {'type': 'number', 'value': total_males}
+2025-03-31 16:49:01 [INFO] Response generated successfully.
+2025-03-31 16:49:30 [INFO] Question: What%20is%20the%20average%20ticket%20fare%20of%20passengers%20in%20Pclass%202
+2025-03-31 16:49:30 [INFO] Running PandaAI with openai LLM...
+2025-03-31 16:49:30 [INFO] Prompt ID: 025e0e71-efb8-418d-a6e7-3f2ac17e2804
+2025-03-31 16:49:30 [INFO] Generating new code...
+2025-03-31 16:49:30 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_2db748e18326a83bc3654aebc5f76f33" dimensions="418x11">
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+892,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,,Q
+893,3,"Wilkes, Mrs. James (Ellen Needs)",female,47.0,1,0,363272,7.0,,S
+894,2,"Myles, Mr. Thomas Francis",male,62.0,0,0,240276,9.6875,,Q
+895,3,"Wirz, Mr. Albert",male,27.0,0,0,315154,8.6625,,S
+896,3,"Hirvonen, Mrs. Alexander (Helga E Lindqvist)",female,22.0,1,1,3101298,12.2875,,S
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What%20is%20the%20average%20ticket%20fare%20of%20passengers%20in%20Pclass%202
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-31 16:49:33 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-31 16:49:33 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Execute SQL query to calculate the average ticket fare for passengers in Pclass 2
+sql_query = """
+SELECT AVG(Fare) AS average_fare
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Pclass = 2
+"""
+
+# Get the result from the database
+average_fare_df = execute_sql_query(sql_query)
+
+# Extract the average fare value
+average_fare = average_fare_df['average_fare'].iloc[0]
+
+# Declare result var: 
+result = {
+    "type": "number",
+    "value": average_fare
+}
+2025-03-31 16:49:33 [INFO] Validating code requirements...
+2025-03-31 16:49:33 [INFO] Code validation successful.
+2025-03-31 16:49:33 [INFO] Cleaning the generated code...
+2025-03-31 16:49:33 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT AVG(Fare) AS average_fare
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Pclass = 2
+"""
+average_fare_df = execute_sql_query(sql_query)
+average_fare = average_fare_df['average_fare'].iloc[0]
+result = {'type': 'number', 'value': average_fare}
+2025-03-31 16:49:33 [INFO] Response generated successfully.
+2025-03-31 16:56:53 [INFO] Question: What%20is%20the%20average%20ticket%20fare%20of%20passengers%20in%20Pclass%203
+2025-03-31 16:56:53 [INFO] Running PandaAI with openai LLM...
+2025-03-31 16:56:53 [INFO] Prompt ID: 1005973b-743b-4ec5-9e13-b5ae367650be
+2025-03-31 16:56:53 [INFO] Generating new code...
+2025-03-31 16:56:53 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_2db748e18326a83bc3654aebc5f76f33" dimensions="418x11">
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+892,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,,Q
+893,3,"Wilkes, Mrs. James (Ellen Needs)",female,47.0,1,0,363272,7.0,,S
+894,2,"Myles, Mr. Thomas Francis",male,62.0,0,0,240276,9.6875,,Q
+895,3,"Wirz, Mr. Albert",male,27.0,0,0,315154,8.6625,,S
+896,3,"Hirvonen, Mrs. Alexander (Helga E Lindqvist)",female,22.0,1,1,3101298,12.2875,,S
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What%20is%20the%20average%20ticket%20fare%20of%20passengers%20in%20Pclass%203
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-31 16:56:57 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-31 16:56:57 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Execute SQL query to calculate the average ticket fare for passengers in Pclass 3
+sql_query = """
+SELECT AVG(Fare) AS average_fare
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Pclass = 3
+"""
+
+# Get the result from the database
+average_fare_df = execute_sql_query(sql_query)
+
+# Extract the average fare value
+average_fare = average_fare_df['average_fare'].iloc[0]
+
+# Declare result var: 
+result = {
+    "type": "number",
+    "value": average_fare
+}
+2025-03-31 16:56:57 [INFO] Validating code requirements...
+2025-03-31 16:56:57 [INFO] Code validation successful.
+2025-03-31 16:56:57 [INFO] Cleaning the generated code...
+2025-03-31 16:56:57 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT AVG(Fare) AS average_fare
+FROM table_2db748e18326a83bc3654aebc5f76f33
+WHERE Pclass = 3
+"""
+average_fare_df = execute_sql_query(sql_query)
+average_fare = average_fare_df['average_fare'].iloc[0]
+result = {'type': 'number', 'value': average_fare}
+2025-03-31 16:56:57 [INFO] Response generated successfully.
+2025-03-31 16:57:00 [INFO] Question: What%20is%20the%20median%20age%20of%20passengers
+2025-03-31 16:57:00 [INFO] Running PandaAI with openai LLM...
+2025-03-31 16:57:00 [INFO] Prompt ID: aab2963b-1361-4333-b9c1-3bb4c0aa3f20
+2025-03-31 16:57:00 [INFO] Generating new code...
+2025-03-31 16:57:00 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_2db748e18326a83bc3654aebc5f76f33" dimensions="418x11">
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+892,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,,Q
+893,3,"Wilkes, Mrs. James (Ellen Needs)",female,47.0,1,0,363272,7.0,,S
+894,2,"Myles, Mr. Thomas Francis",male,62.0,0,0,240276,9.6875,,Q
+895,3,"Wirz, Mr. Albert",male,27.0,0,0,315154,8.6625,,S
+896,3,"Hirvonen, Mrs. Alexander (Helga E Lindqvist)",female,22.0,1,1,3101298,12.2875,,S
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What%20is%20the%20median%20age%20of%20passengers
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
